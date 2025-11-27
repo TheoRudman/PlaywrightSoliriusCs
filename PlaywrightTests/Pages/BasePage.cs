@@ -4,12 +4,36 @@ namespace PlaywrightTests.Pages;
 
 public abstract class BasePage(IPage page)
 {
+    protected readonly IPage Page;
+    protected readonly string BaseUrl;
+    
+    protected BasePage(IPage page, string baseUrl) : this(page)
+    {
+        Page = page;
+        BaseUrl = baseUrl;
+    }
+    
     protected enum LocatorType
     {
         Id,
         Xpath,
         Css,
         ClassName
+    }
+    
+    protected async Task Navigate(string url)
+    {
+        if (url.StartsWith("/"))
+        {
+            await page.GotoAsync(BaseUrl + url);
+        }
+        else
+        {
+            url = "/" + url;
+            await page.GotoAsync(BaseUrl+ url);
+        }
+        //await page.GotoAsync(url);
+        await WaitForIdle();
     }
     
     private static string GetSelector(string element, LocatorType locator)
@@ -35,7 +59,9 @@ public abstract class BasePage(IPage page)
         
         return element;
     }
-
+    protected async Task WaitForIdle()
+        => await page.WaitForLoadStateAsync(LoadState.NetworkIdle);
+    
     protected async Task Click(string element, LocatorType locator = LocatorType.Id)
     {
         element = GetSelector(element, locator);
@@ -48,12 +74,17 @@ public abstract class BasePage(IPage page)
         await WaitForIdle();
     }
 
-    protected async Task Navigate(string url)
+    protected async Task IsVisible(string element, bool isVisible = true, LocatorType locator = LocatorType.Id)
     {
-        await page.GotoAsync(url);
-        await WaitForIdle();
+        element = GetSelector(element, locator);
+        if (isVisible)
+        {
+            await Assertions.Expect(page.Locator(element)).ToBeVisibleAsync();
+        }
+        else
+        {
+            await Assertions.Expect(page.Locator(element)).ToBeHiddenAsync();
+        }
     }
-    
-    protected async Task WaitForIdle()
-        => await page.WaitForLoadStateAsync(LoadState.NetworkIdle);
+
 }

@@ -7,11 +7,11 @@ public class PlaywrightFixture : IAsyncLifetime
 {
     private IPlaywright _pw = null!;     // Playwright engine instance
     private IBrowser _browser = null!;   // Shared browser instance
-    private readonly TestSettings _settings;
+    public TestSettings Settings {get; }
 
     public PlaywrightFixture()
     {
-        _settings = SettingsLoader.Load();   // Load settings from appsettings.json
+        Settings = SettingsLoader.Load();   // Load settings from appsettings.json
     }
 
     public async Task InitializeAsync()
@@ -21,8 +21,8 @@ public class PlaywrightFixture : IAsyncLifetime
         // Launch browser using settings (headless/channel)
         _browser = await _pw.Chromium.LaunchAsync(new()
         {
-            Headless = _settings.Headless,
-            Channel = _settings.Channel
+            Headless = Settings.Headless,
+            Channel = Settings.Channel
         });
     }
 

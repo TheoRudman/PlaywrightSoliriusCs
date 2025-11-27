@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Dev\\PlaywrightPomCs\\PlaywrightTests\\PlaywrightTests.csproj": {}
+    "C:\\Users\\Theor\\RiderProjects\\PlaywrightPomCs\\PlaywrightTests\\PlaywrightTests.csproj": {}
   },
   "projects": {
-    "C:\\Dev\\PlaywrightPomCs\\PlaywrightTests\\PlaywrightTests.csproj": {
+    "C:\\Users\\Theor\\RiderProjects\\PlaywrightPomCs\\PlaywrightTests\\PlaywrightTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Dev\\PlaywrightPomCs\\PlaywrightTests\\PlaywrightTests.csproj",
+        "projectUniqueName": "C:\\Users\\Theor\\RiderProjects\\PlaywrightPomCs\\PlaywrightTests\\PlaywrightTests.csproj",
         "projectName": "PlaywrightTests",
-        "projectPath": "C:\\Dev\\PlaywrightPomCs\\PlaywrightTests\\PlaywrightTests.csproj",
-        "packagesPath": "C:\\Users\\trudman\\.nuget\\packages\\",
-        "outputPath": "C:\\Dev\\PlaywrightPomCs\\PlaywrightTests\\obj\\",
+        "projectPath": "C:\\Users\\Theor\\RiderProjects\\PlaywrightPomCs\\PlaywrightTests\\PlaywrightTests.csproj",
+        "packagesPath": "C:\\Users\\Theor\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Theor\\RiderProjects\\PlaywrightPomCs\\PlaywrightTests\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\trudman\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Theor\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -38,13 +34,7 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.300"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -87,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300-preview.0.25177.5/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
