@@ -1,0 +1,21 @@
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+!*.code-workspace
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+# Playwright browser binaries
+bin/Debug/**/playwright/
+bin/Release/**/playwright/
+
+# Traces, videos, screenshots
+playwright-report/
+test-results/
+trace.zip
+*.webm
+*.png
