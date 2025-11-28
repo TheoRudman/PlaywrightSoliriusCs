@@ -1,3 +1,4 @@
+using static Microsoft.Playwright.Assertions;
 using Microsoft.Playwright;
 
 namespace PlaywrightTests.Pages;
@@ -32,7 +33,6 @@ public abstract class BasePage(IPage page)
             url = "/" + url;
             await page.GotoAsync(BaseUrl+ url);
         }
-        //await page.GotoAsync(url);
         await WaitForIdle();
     }
     
@@ -79,12 +79,55 @@ public abstract class BasePage(IPage page)
         element = GetSelector(element, locator);
         if (isVisible)
         {
-            await Assertions.Expect(page.Locator(element)).ToBeVisibleAsync();
+            await Expect(page.Locator(element)).ToBeVisibleAsync();
         }
         else
         {
-            await Assertions.Expect(page.Locator(element)).ToBeHiddenAsync();
+            await Expect(page.Locator(element)).ToBeHiddenAsync();
         }
     }
 
+    protected async Task IsChecked(string element, LocatorType locator = LocatorType.Id)
+    {
+        element = GetSelector(element, locator);
+        await IsChecked(page.Locator(element));
+    }
+    
+    protected async Task IsChecked(ILocator locator)
+    {
+        await Expect(locator).ToBeCheckedAsync();
+    }
+    
+    protected async Task InputText(string element, string text, LocatorType locator = LocatorType.Id)
+    {
+        var locatorElement = page.Locator(GetSelector(element, locator));
+        await InputText(locatorElement, text);
+    }
+
+    protected async Task InputText(ILocator locator, string text)
+    {
+        await locator.FillAsync(text);
+    }
+    
+    protected async Task AcceptCookies(bool accept)
+    {
+        string xpathVariable;
+        if (accept)
+            xpathVariable = "accept";
+        else
+            xpathVariable = "reject";
+
+        var button = Page.Locator($"//button[@data-{xpathVariable}-cookies='true']");
+        bool isPresent = await button.IsVisibleAsync();
+        if (isPresent)
+        {
+            await Click(button);
+            await IsVisible("//button[@data-hide-cookie-banner='true']", true, LocatorType.Xpath);
+        }
+        else
+        {
+            Console.WriteLine($"Cannot find element: {button}");
+        }
+        
+    }
 }

@@ -1691,19 +1691,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Theor\\.nuget\\packages\\": {}
+    "C:\\Users\\trudman\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Theor\\RiderProjects\\PlaywrightPomCs\\PlaywrightTests\\PlaywrightTests.csproj",
+      "projectUniqueName": "C:\\Dev\\PlaywrightPomCs\\PlaywrightTests\\PlaywrightTests.csproj",
       "projectName": "PlaywrightTests",
-      "projectPath": "C:\\Users\\Theor\\RiderProjects\\PlaywrightPomCs\\PlaywrightTests\\PlaywrightTests.csproj",
-      "packagesPath": "C:\\Users\\Theor\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Theor\\RiderProjects\\PlaywrightPomCs\\PlaywrightTests\\obj\\",
+      "projectPath": "C:\\Dev\\PlaywrightPomCs\\PlaywrightTests\\PlaywrightTests.csproj",
+      "packagesPath": "C:\\Users\\trudman\\.nuget\\packages\\",
+      "outputPath": "C:\\Dev\\PlaywrightPomCs\\PlaywrightTests\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Theor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\trudman\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1723,7 +1728,13 @@
         "warnAsError": [
           "NU1605"
         ]
-      }
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net8.0": {
@@ -1766,7 +1777,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300-preview.0.25177.5/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
