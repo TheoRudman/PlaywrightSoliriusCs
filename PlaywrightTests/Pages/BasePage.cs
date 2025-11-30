@@ -56,9 +56,9 @@ public abstract class BasePage(IPage page)
                 element = $".{element}";
                 break;
         }
-        
         return element;
     }
+    
     protected async Task WaitForIdle()
         => await page.WaitForLoadStateAsync(LoadState.NetworkIdle);
     
@@ -108,6 +108,17 @@ public abstract class BasePage(IPage page)
     {
         await locator.FillAsync(text);
     }
+
+    protected async Task ContainsText(string element, string text, LocatorType locator = LocatorType.Id)
+    {
+        var locatorElement = page.Locator(GetSelector(element, locator));
+        await ContainsText(locatorElement, text);
+    }
+    
+    protected async Task ContainsText(ILocator locator, string text)
+    {
+        await Expect(locator).ToContainTextAsync(text);
+    }
     
     protected async Task AcceptCookies(bool accept)
     {
@@ -128,6 +139,5 @@ public abstract class BasePage(IPage page)
         {
             Console.WriteLine($"Cannot find element: {button}");
         }
-        
     }
 }
