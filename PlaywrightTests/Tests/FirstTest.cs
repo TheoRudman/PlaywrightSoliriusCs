@@ -4,7 +4,7 @@ using Xunit.Abstractions;
 
 namespace PlaywrightTests.Tests;
 
-public class FirstTest(PlaywrightFixture fixture, ITestOutputHelper output) : TestBase(fixture, output)
+public class FirstTest(PlaywrightFixture fixture) : TestBase(fixture)
 {
     [Fact]
     public async Task RejectCookiesBanner()
