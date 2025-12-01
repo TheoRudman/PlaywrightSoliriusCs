@@ -1,8 +1,9 @@
 using Microsoft.Playwright;
+using Xunit.Abstractions;
 
 namespace PlaywrightTests.Pages;
 
-public class FirstPage(IPage page, string baseUrl) : BasePage(page, baseUrl)
+public class FirstPage(IPage page, string baseUrl, ITestOutputHelper? output = null) : BasePage(page, baseUrl, output)
 {
     public async Task SetupInitialPage( bool acceptCookies = true)
     {

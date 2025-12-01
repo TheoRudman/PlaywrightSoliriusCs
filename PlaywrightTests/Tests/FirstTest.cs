@@ -4,19 +4,20 @@ using Xunit.Abstractions;
 
 namespace PlaywrightTests.Tests;
 
-public class FirstTest(PlaywrightFixture fixture) : TestBase(fixture)
+public class FirstTest(PlaywrightFixture fixture, ITestOutputHelper output) : TestBase(fixture)
 {
+    
     [Fact]
     public async Task RejectCookiesBanner()
     {
-        var firstPage = new FirstPage(Page, BaseUrl);
+        var firstPage = new FirstPage(Page, BaseUrl, output);
         await firstPage.SetupInitialPage(false);
     }
     
     [Fact]
     public async Task ChangeIrregularHours()
     {
-        var firstPage = new FirstPage(Page, BaseUrl);
+        var firstPage = new FirstPage(Page, BaseUrl, output);
         await firstPage.SetupInitialPage();
         await firstPage.ClickStartNow();
         await firstPage.SetIrregularHours(true);
@@ -27,7 +28,7 @@ public class FirstTest(PlaywrightFixture fixture) : TestBase(fixture)
     [Fact]
     public async Task VerifyStartAgain()
     {
-        var firstPage = new FirstPage(Page, BaseUrl);
+        var firstPage = new FirstPage(Page, BaseUrl, output);
         await firstPage.SetupInitialPage();
         await firstPage.ClickStartNow();
         await firstPage.SetIrregularHours(false);
@@ -37,7 +38,7 @@ public class FirstTest(PlaywrightFixture fixture) : TestBase(fixture)
     [Fact]
     public async Task InvalidLeaveYear()
     {
-        var firstPage = new FirstPage(Page, BaseUrl);
+        var firstPage = new FirstPage(Page, BaseUrl, output);
         await firstPage.SetupInitialPage();
         await firstPage.ClickStartNow();
         await firstPage.SetIrregularHours(true);
@@ -48,7 +49,7 @@ public class FirstTest(PlaywrightFixture fixture) : TestBase(fixture)
     [Fact]
     public async Task IrregularHoursWithDaysPerWeekLeavingPartWayThroughLeaveYear()
     {
-        var firstPage = new FirstPage(Page, BaseUrl);
+        var firstPage = new FirstPage(Page, BaseUrl, output);
         await firstPage.SetupInitialPage();
         await firstPage.ClickStartNow();
         await firstPage.SetIrregularHours(true);
@@ -63,7 +64,7 @@ public class FirstTest(PlaywrightFixture fixture) : TestBase(fixture)
     [Fact]
     public async Task InvalidEmploymentDate()
     {
-        var firstPage = new FirstPage(Page, BaseUrl);
+        var firstPage = new FirstPage(Page, BaseUrl, output);
         await firstPage.SetupInitialPage();
         await firstPage.ClickStartNow();
         await firstPage.SetIrregularHours(true);
@@ -76,7 +77,7 @@ public class FirstTest(PlaywrightFixture fixture) : TestBase(fixture)
     [Fact]
     public async Task InvalidNumberOfDaysWorked()
     {
-        var firstPage = new FirstPage(Page, BaseUrl);
+        var firstPage = new FirstPage(Page, BaseUrl, output);
         await firstPage.SetupInitialPage();
         await firstPage.ClickStartNow();
         await firstPage.SetIrregularHours(true);

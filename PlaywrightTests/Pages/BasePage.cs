@@ -1,5 +1,6 @@
 using static Microsoft.Playwright.Assertions;
 using Microsoft.Playwright;
+using Xunit.Abstractions;
 
 namespace PlaywrightTests.Pages;
 
@@ -7,11 +8,18 @@ public abstract class BasePage(IPage page)
 {
     protected readonly IPage Page;
     protected readonly string BaseUrl;
+    protected ITestOutputHelper Output;
     
-    protected BasePage(IPage page, string baseUrl) : this(page)
+    protected BasePage(IPage page, string baseUrl, ITestOutputHelper output) : this(page)
     {
         Page = page;
         BaseUrl = baseUrl;
+        Output = output;
+    }
+    
+    protected void Log(string message)
+    {
+        Output?.WriteLine(message);
     }
     
     protected enum LocatorType
@@ -34,6 +42,7 @@ public abstract class BasePage(IPage page)
             await page.GotoAsync(BaseUrl+ url);
         }
         await WaitForIdle();
+        Log($"Navigated to url: {url}");
     }
     
     private static string GetSelector(string element, LocatorType locator)
@@ -72,6 +81,7 @@ public abstract class BasePage(IPage page)
     {
         await locator.ClickAsync();
         await WaitForIdle();
+        Log($"Click called on: {locator}");
     }
 
     protected async Task IsVisible(string element, bool isVisible = true, LocatorType locator = LocatorType.Id)
@@ -85,6 +95,7 @@ public abstract class BasePage(IPage page)
         {
             await Expect(page.Locator(element)).ToBeHiddenAsync();
         }
+        Log($"IsVisible called on: {element}");
     }
 
     protected async Task IsChecked(string element, LocatorType locator = LocatorType.Id)
@@ -96,6 +107,7 @@ public abstract class BasePage(IPage page)
     protected async Task IsChecked(ILocator locator)
     {
         await Expect(locator).ToBeCheckedAsync();
+        Log($"IsChecked called on: {locator}");
     }
     
     protected async Task InputText(string element, string text, LocatorType locator = LocatorType.Id)
@@ -107,6 +119,7 @@ public abstract class BasePage(IPage page)
     protected async Task InputText(ILocator locator, string text)
     {
         await locator.FillAsync(text);
+        Log($"InputText called on: {locator} with text: {text}");
     }
 
     protected async Task ContainsText(string element, string text, LocatorType locator = LocatorType.Id)
@@ -118,6 +131,7 @@ public abstract class BasePage(IPage page)
     protected async Task ContainsText(ILocator locator, string text)
     {
         await Expect(locator).ToContainTextAsync(text);
+        Log($"ContainsText called on: {locator} with text: {text}");
     }
     
     protected async Task AcceptCookies(bool accept)
@@ -134,10 +148,12 @@ public abstract class BasePage(IPage page)
         {
             await Click(button);
             await IsVisible("//button[@data-hide-cookie-banner='true']", true, LocatorType.Xpath);
+            Log($"Cookies selected with value: {xpathVariable}");
         }
         else
         {
-            Console.WriteLine($"Cannot find element: {button}");
+            Log($"Cannot find Cookies element: {button}");
         }
+        
     }
 }

@@ -5,20 +5,18 @@ namespace PlaywrightTests.Fixtures;
 
 public class PlaywrightFixture : IAsyncLifetime
 {
-    private IPlaywright _pw = null!;     // Playwright engine instance
-    private IBrowser _browser = null!;   // Shared browser instance
+    private IPlaywright _pw = null!;
+    private IBrowser _browser = null!;
     public TestSettings Settings {get; }
 
     public PlaywrightFixture()
     {
-        Settings = SettingsLoader.Load();   // Load settings from appsettings.json
+        Settings = SettingsLoader.Load();
     }
 
     public async Task InitializeAsync()
     {
-        _pw = await Playwright.CreateAsync();   // Start Playwright
-
-        // Launch browser using settings (headless/channel)
+        _pw = await Playwright.CreateAsync();
         _browser = await _pw.Chromium.LaunchAsync(new()
         {
             Headless = Settings.Headless,
@@ -28,14 +26,13 @@ public class PlaywrightFixture : IAsyncLifetime
 
     public async Task DisposeAsync()
     {
-        await _browser.CloseAsync();   // Close browser when tests finish
-        _pw?.Dispose();                // Dispose Playwright engine
+        await _browser.CloseAsync();
+        _pw?.Dispose();
     }
 
-    // Creates an isolated browser context and page per test (parallel-safe)
     public async Task<IPage> CreateIsolatedPageAsync()
     {
-        var context = await _browser.NewContextAsync();   // New browser profile
-        return await context.NewPageAsync();              // New page for the test
+        var context = await _browser.NewContextAsync();
+        return await context.NewPageAsync();
     }
 }
