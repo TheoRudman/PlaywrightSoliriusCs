@@ -3,7 +3,7 @@ using Xunit.Abstractions;
 
 namespace PlaywrightTests.Pages;
 
-public class FirstPage(IPage page, string baseUrl, ITestOutputHelper? output = null) : BasePage(page, baseUrl, output)
+public class CalculateHolidayPage(IPage page, string baseUrl, ITestOutputHelper? output = null) : BasePage(page, baseUrl, output)
 {
     public async Task SetupInitialPage( bool acceptCookies = true)
     {

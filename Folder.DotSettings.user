@@ -8,7 +8,7 @@
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a9114131_002D53d9_002D40f7_002Db3ff_002D0d6bb953973b/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ChangeIrregularHours" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::62EE459B-FEF4-0BE8-0E30-158CFDB19555::net8.0::PlaywrightTests.Tests.FirstTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::62EE459B-FEF4-0BE8-0E30-158CFDB19555::net8.0::PlaywrightTests.Tests.CalculateHolidayTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	
