@@ -4,19 +4,22 @@ using Xunit.Abstractions;
 
 namespace PlaywrightTests.Pages;
 
+// Abstract base class used by all Page Objects.
+// Contains common utilities such as navigation, logging & locator handling.
 public abstract class BasePage(IPage page)
 {
-    protected readonly IPage Page;
-    protected readonly string BaseUrl;
-    protected ITestOutputHelper Output;
-    
+    protected readonly IPage Page;               // Playwright browser page instance
+    protected readonly string BaseUrl;           // Global site URL reference
+    protected ITestOutputHelper Output;          // Logs test actions in console/CI pipeline
+
+    // Overloaded constructor to inject URL + test logger
     protected BasePage(IPage page, string baseUrl, ITestOutputHelper output) : this(page)
     {
         Page = page;
         BaseUrl = baseUrl;
         Output = output;
     }
-    
+
     protected void Log(string message)
     {
         Output?.WriteLine(message);
