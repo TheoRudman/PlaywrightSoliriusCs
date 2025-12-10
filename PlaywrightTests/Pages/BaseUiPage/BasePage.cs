@@ -1,8 +1,8 @@
-using static Microsoft.Playwright.Assertions;
 using Microsoft.Playwright;
 using Xunit.Abstractions;
+using static Microsoft.Playwright.Assertions;
 
-namespace PlaywrightTests.Pages;
+namespace PlaywrightTests.Pages.BaseUiPage;
 
 public abstract class BasePage(IPage page)
 {
