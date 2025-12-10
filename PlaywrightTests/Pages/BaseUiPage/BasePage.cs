@@ -1,8 +1,8 @@
-using static Microsoft.Playwright.Assertions;
 using Microsoft.Playwright;
 using Xunit.Abstractions;
+using static Microsoft.Playwright.Assertions;
 
-namespace PlaywrightTests.Pages;
+namespace PlaywrightTests.Pages.BaseUiPage;
 
 // Abstract base class used by all Page Objects.
 // Contains common utilities such as navigation, logging & locator handling.

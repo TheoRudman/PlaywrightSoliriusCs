@@ -19,3 +19,6 @@ bin/Release/**/playwright/
 *.user
 *.suo
 *.cache
+
+# SpecFlow generated code-behind
+*.feature.cs

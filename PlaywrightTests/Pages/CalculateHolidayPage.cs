@@ -1,4 +1,5 @@
 using Microsoft.Playwright;
+using PlaywrightTests.Pages.BaseUiPage;
 using Xunit.Abstractions;
 
 namespace PlaywrightTests.Pages;
